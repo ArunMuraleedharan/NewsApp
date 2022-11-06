@@ -1,10 +1,36 @@
 
 import 'package:flutter/material.dart';
 import 'package:newsapp/DetailScreen.dart';
+import 'package:newsapp/services/database.dart';
 
 import 'Model/article_model.dart';
 
 Widget customListTile(Article article, BuildContext context) {
+
+  Future<void> _displayTextInputDialog(BuildContext context) async {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return SingleChildScrollView(
+              child: Center(
+                child: AlertDialog(
+                  backgroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20),bottomLeft:Radius.circular(20),bottomRight: Radius.circular(20) )),
+                  title: Text('BookMark Added ',style: TextStyle(color: Colors.black),),
+                  actions: [
+                    SizedBox(width: 25,),
+                    GestureDetector(
+                      onTap: (){
+                        Navigator.of(context).pop(false);
+                      },
+                      child: Text("Ok"),
+                    )
+                  ],
+                ),
+              )
+          );
+        });
+  }
   return InkWell(
     onTap: () {
       Navigator.push(
@@ -39,19 +65,19 @@ Widget customListTile(Article article, BuildContext context) {
           SizedBox(
             height: 8.0,
           ),
-          Container(
-            padding: EdgeInsets.all(6.0),
-            decoration: BoxDecoration(
-              color: Colors.blue,
-              borderRadius: BorderRadius.circular(30.0),
-            ),
-            child: Text(
-              article.source.name,
-              style: TextStyle(
-                color: Colors.white,
-              ),
-            ),
-          ),
+          // Container(
+          //   padding: EdgeInsets.all(6.0),
+          //   decoration: BoxDecoration(
+          //     color: Colors.blue,
+          //     borderRadius: BorderRadius.circular(30.0),
+          //   ),
+          //   child: Text(
+          //     article.source.name,
+          //     style: TextStyle(
+          //       color: Colors.white,
+          //     ),
+          //   ),
+          // ),
           SizedBox(
             height: 8.0,
           ),
@@ -64,12 +90,14 @@ Widget customListTile(Article article, BuildContext context) {
           ),
           IconButton(
             icon: Icon(Icons.bookmark_add_outlined),
-            iconSize: 20,
+            iconSize: 40,
             color: Colors.white,
-            onPressed:(){
-
+            onPressed:() async{
+              await  DatabaseHelper.addNote(article);
+              _displayTextInputDialog(context);
             },
-          )
+          ),
+
         ],
       ),
     ),

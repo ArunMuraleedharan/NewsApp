@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:newsapp/services/api_services.dart';
 
+import 'BookMarkScreen.dart';
 import 'Model/article_model.dart';
 import 'customTile.dart';
 import 'main.dart';
@@ -42,15 +43,15 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         ],
       ),
 
-      body: FutureBuilder(
+      body:index==0? FutureBuilder(
         future: client.getArticle(),
         builder: (BuildContext context, AsyncSnapshot<List<Article>?> snapshot) {
           if (snapshot.hasData) {
             List<Article>? articles = snapshot.data;
             return GridView.builder(
               itemCount: articles!.length,
-              itemBuilder: (context, index)=>customListTile(articles[index], context),
               gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1),
+              itemBuilder: (context, index)=>customListTile(articles[index], context),
 
             );
           }
@@ -58,7 +59,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             child: CircularProgressIndicator(),
           );
         },
-      ),
+      ):BookMark(),
       bottomNavigationBar: NavigationBar(
         height: 60,
         selectedIndex: index,
@@ -68,8 +69,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         },
         animationDuration: Duration(milliseconds: 200),
         destinations: [
-          NavigationDestination(icon: Icon(Icons.home), label: "Place Order"),
-          NavigationDestination(icon: Icon(Icons.bookmark_add_outlined), label: "Status")
+          NavigationDestination(icon: Icon(Icons.home), label: "Home"),
+          NavigationDestination(icon: Icon(Icons.bookmark_add_outlined), label: "BookMarked")
         ],
       ),
     );

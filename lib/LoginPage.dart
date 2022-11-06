@@ -119,11 +119,12 @@ class _AuthFormState extends ConsumerState<AuthForm> {
                   onPressed: (){_trySubmit();},
                 ),
                 MaterialButton(
+                  color: Colors.blue,
                     onPressed: (){
                       ref.read(google_login).googleLogin();
 
                     },
-                  child: Text("Google SignIn"),
+                  child: Text("Google Sign In"),
                 )
               ],
             ),

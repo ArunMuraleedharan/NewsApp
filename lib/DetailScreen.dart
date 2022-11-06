@@ -34,19 +34,19 @@ class DetailScreen extends StatelessWidget {
             SizedBox(
               height: 8.0,
             ),
-            Container(
-              padding: EdgeInsets.all(6.0),
-              decoration: BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.circular(30.0),
-              ),
-              child: Text(
-                article.source.name,
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-            ),
+            // Container(
+            //   padding: EdgeInsets.all(6.0),
+            //   decoration: BoxDecoration(
+            //     color: Colors.blue,
+            //     borderRadius: BorderRadius.circular(30.0),
+            //   ),
+            //   child: Text(
+            //     article.source.name,
+            //     style: TextStyle(
+            //       color: Colors.white,
+            //     ),
+            //   ),
+            // ),
             SizedBox(
               height: 8.0,
             ),

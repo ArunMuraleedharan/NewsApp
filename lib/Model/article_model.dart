@@ -1,7 +1,7 @@
 import 'source_model.dart';
 
 class Article {
-  Source source;
+  // Source source;
   String author;
   String title;
   String description;
@@ -12,7 +12,7 @@ class Article {
 
   Article(
       {
-        required this.source,
+        // required this.source,
         required this.author,
         required this.title,
         required this.description,
@@ -23,7 +23,7 @@ class Article {
 
   factory Article.fromJson(Map<String, dynamic> json) {
     return Article(
-      source: Source.fromJson(json['source']),
+      // source: Source.fromJson(json['source']),
       author: json['author'].toString(),
       title: json['title'].toString(),
       description: json['description'].toString(),

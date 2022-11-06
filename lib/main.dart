@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:hive/hive.dart';
 import 'package:newsapp/HomeScreen.dart';
 import 'package:newsapp/provider/FirebaseProvider.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:newsapp/provider/google_signin.dart';
-import 'package:path_provider/path_provider.dart' as path_provider;
+import 'package:newsapp/services/database.dart';
+
 
 import 'auth.dart';
 
